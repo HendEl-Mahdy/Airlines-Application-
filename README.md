@@ -31,5 +31,8 @@ Master-Details Application for Airlines that helps users find and manage informa
 
 ## Installation
 1. Open the Xcode Application
-2. Clone Git Repository
-3. 
+2. Choose Clone Git Repository
+3. Add the Repository URL
+  ```
+   https://github.com/HendEl-Mahdy/Airlines-Application-.git
+  ```
