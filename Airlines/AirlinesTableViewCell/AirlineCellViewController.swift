@@ -14,31 +14,29 @@ class AirlineCellViewController: UITableViewCell {
             return Constants.cellIdentifier
         }
     }
-
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var cellArrow: UIImageView!
-    @IBOutlet weak var cellLabel: UILabel!
+    
+    @IBOutlet private(set) weak var cellView: UIView!
+    @IBOutlet private(set) weak var cellArrow: UIImageView!
+    @IBOutlet private(set) weak var cellLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         updateCellUI()
     }
     
-    public static func register()->UINib{
+    public static func register() -> UINib {
         UINib(nibName: Constants.cellVC, bundle: nil)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func setupCell(name: String){
         self.cellLabel.text = name
-
     }
     
-    func updateCellUI(){
+    private func updateCellUI(){
         cellView.addBorder(color: .systemGray5, width: Constants.cellBorderWidth)
         cellView.round(radius: Constants.cellCornerRadius)
     }

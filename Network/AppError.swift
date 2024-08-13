@@ -14,11 +14,10 @@ enum AppError: Error{
     var networkError: String{
         switch self{
         case .invalidURLError:
-            return "The URL provided is invalid. Please check the URL and try again."
+            return Constants.invalidURLError
         case .parsingError:
-            return "Data parsing error. Please try again."
+            return Constants.parsingError
             
         }
-        
     }
 }

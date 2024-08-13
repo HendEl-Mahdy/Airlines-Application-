@@ -6,56 +6,64 @@
 //
 
 import UIKit
+import RxSwift
+
 
 class AddAirlinesViewController: UIViewController {
     
-    var viewModel = AddAirlinesViewModel()
-    var validateInput = TextFieldValidation()
+    private var viewModel: AddAirlinesProtocol = AddAirlinesViewModel()
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var container: UIView!
+    @IBOutlet private(set) weak var container: UIView!
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var sloganTextField: UITextField!
-    @IBOutlet weak var countryTextField: UITextField!
-    @IBOutlet weak var headquatersTextField: UITextField!
-    @IBOutlet weak var websiteTextField: UITextField!
-
-    @IBOutlet weak var errorNameLabel: UILabel!
-    @IBOutlet weak var errorWebsiteLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet private(set) weak var nameTextField: UITextField!
+    @IBOutlet private(set) weak var sloganTextField: UITextField!
+    @IBOutlet private(set) weak var countryTextField: UITextField!
+    @IBOutlet private(set) weak var headquatersTextField: UITextField!
+    @IBOutlet private(set) weak var websiteTextField: UITextField!
     
-
+    @IBOutlet private(set) weak var errorNameLabel: UILabel!
+    @IBOutlet private(set) weak var errorWebsiteLabel: UILabel!
+    @IBOutlet private(set) weak var cancelButton: UIButton!
+    @IBOutlet private(set) weak var confirmButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         keyboardNotification()
+        bindToDismissViewController()
+        bindKeyboardHeight()
     }
     
-    
-    @IBAction func confirmButtonPressed(_ sender: Any) {
-        let validationNumber = validateInput.validateInputData(nameTextField, websiteTextField, errorNameLabel, errorWebsiteLabel)
-        if  validationNumber == 3{
-            addAirline()
-            self.dismiss(animated: true, completion: nil)
-        }
+    private func addAirline(){
+        viewModel.insertAirline(name: nameTextField,
+                                country: countryTextField.text,
+                                slogan: sloganTextField.text,
+                                headquaters: headquatersTextField.text,
+                                website: websiteTextField,
+                                nameLabel: errorNameLabel,
+                                websiteLabel: errorWebsiteLabel)
     }
     
-    @IBAction func cancelButtonPressed(_ sender: Any) {
-        
+    private func bindToDismissViewController(){
+        viewModel.dismissViewControllerTrigger?
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    @IBAction private func confirmButtonPressed(_ sender: Any) {
+        addAirline()
+    }
+    
+    @IBAction private func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func addAirline(){
-        
-        viewModel.insertAirline(name: nameTextField.text!,
-                               country: countryTextField.text,
-                               slogan: sloganTextField.text,
-                               headquaters: headquatersTextField.text,
-                               website: websiteTextField.text!)
-    }
-    
-    func setup(){
+    private func setup(){
         container.round(radius: 15)
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -73,11 +81,17 @@ class AddAirlinesViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
-    func keyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    private func bindKeyboardHeight(){
+        viewModel.keyboardHeight
+            .subscribe(onNext: { [weak self] keyboardHeight in
+                self?.adjustContentForKeyboard(show: true, keyboardHeight: keyboardHeight)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func keyboardNotification(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -85,36 +99,17 @@ class AddAirlinesViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            if let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-                let keyboardHeight = keyboardFrame.height
-                adjustContentForKeyboard(show: true, keyboardHeight: keyboardHeight)
-            }
-        }
-    }
-    
     @objc func keyboardWillHide(notification: NSNotification) {
         adjustContentForKeyboard(show: false, keyboardHeight: 0)
     }
     
-    func adjustContentForKeyboard(show: Bool, keyboardHeight: CGFloat) {
+    private func adjustContentForKeyboard(show: Bool, keyboardHeight: CGFloat) {
         let adjustmentHeight = show ? keyboardHeight : 0
         view.frame.origin.y = -adjustmentHeight
     }
     
     @objc func dismissKeyboard() {
-            view.endEditing(true)
+        view.endEditing(true)
     }
     
 }
-
-//  MARK: - AddAirlines protocol
-
-protocol AddAirlinesViewDelegate{
-    
-    func dataReload()
-    
-}
-
-

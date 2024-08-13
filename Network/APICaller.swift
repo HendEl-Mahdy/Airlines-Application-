@@ -7,10 +7,10 @@
 
 import Foundation
 
-class APICaller{
+struct APICaller{
     
         static func getAirlinesData(
-            completionHandler: @escaping (_ result: Result<[InputData],AppError>)
+            completionHandler: @escaping (_ result: Result<[InputData], AppError>)
         -> Void) {
             guard let url = URL(string: Constants.apiURL) else{
                 completionHandler(.failure(.invalidURLError))

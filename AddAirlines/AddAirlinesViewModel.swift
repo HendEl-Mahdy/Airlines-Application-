@@ -7,37 +7,62 @@
 import Foundation
 import CoreData
 import UIKit
+import RxSwift
+import RxRelay
+import RxCocoa
 
-class AddAirlinesViewModel{
+protocol AddAirlinesProtocol{
+    var keyboardHeight: BehaviorRelay<CGFloat> {get}
+    var dismissViewControllerTrigger: PublishSubject<Void>? {get}
+    
+    func insertAirline(name: UITextField, country: String?, slogan: String?, headquaters: String?, website: UITextField, nameLabel: UILabel, websiteLabel: UILabel)
+}
 
-    var delegate : AddAirlinesViewDelegate?
+class AddAirlinesViewModel: AddAirlinesProtocol{
     
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var keyboardHeight = BehaviorRelay<CGFloat>(value: 0)
+    var dismissViewControllerTrigger: RxSwift.PublishSubject<Void>? = PublishSubject<Void>()
+    var dataManagment = DataManagement()
+    private let disposeBag = DisposeBag()
+    private var validateInput = TextFieldValidation()
     
-    
-    func insertAirline(name:String,
-                       country:String?,
-                       slogan:String?,
-                       headquaters:String?,
-                       website:String) {
-        
-        let airlineData = AirlinesEntity(context: context)
-        airlineData.name = name
-        airlineData.country = country
-        airlineData.slogan = slogan
-        airlineData.head_quaters = headquaters
-        airlineData.website = website
-        
-        saveAirlines()
+    init() {
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { [weak self] notification in
+                self?.handleKeyboardWillShow(notification: notification)
+            })
+            .disposed(by: disposeBag)
     }
     
-    private func saveAirlines(){
-        do{
-            try context.save()
-            delegate?.dataReload()
-        }catch{
-            print(Constants.savingError)
+    func insertAirline(name: UITextField,
+                       country: String?,
+                       slogan: String?,
+                       headquaters: String?,
+                       website: UITextField,
+                       nameLabel: UILabel,
+                       websiteLabel: UILabel) {
+        
+        let validationNumber = validateInput.validateInputData(name, website, nameLabel, websiteLabel)
+        
+        if  validationNumber == 3 {
+            let airlineData = AirlinesEntity(context: dataManagment.context)
+            
+            airlineData.name = name.text
+            airlineData.country = country
+            airlineData.slogan = slogan
+            airlineData.head_quaters = headquaters
+            airlineData.website = website.text
+            
+            dataManagment.saveAirlines()
+            dismissViewControllerTrigger?.onNext(())
         }
     }
     
+    private func handleKeyboardWillShow(notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let height = keyboardFrame.height
+            keyboardHeight.accept(height)
+        }
+    }
 }

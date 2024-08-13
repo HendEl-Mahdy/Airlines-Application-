@@ -7,29 +7,30 @@
 
 import UIKit
 import WebKit
+import RxSwift
 
 class DetailsViewController: UIViewController {
     
-    var viewModel: DetailsViewModel
-    var websiteURL: String
+    private var viewModel: DetailsProtocol
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var navigationView: UIView!
-    @IBOutlet weak var detailedView: UIView!
+    @IBOutlet private(set) weak var navigationView: UIView!
+    @IBOutlet private(set) weak var detailedView: UIView!
     
-    @IBOutlet weak var navigationLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var sloganLabel: UILabel!
-    @IBOutlet weak var headquatersLabel: UILabel!
+    @IBOutlet private(set) weak var navigationLabel: UILabel!
+    @IBOutlet private(set) weak var nameLabel: UILabel!
+    @IBOutlet private(set) weak var countryLabel: UILabel!
+    @IBOutlet private(set) weak var sloganLabel: UILabel!
+    @IBOutlet private(set) weak var headquatersLabel: UILabel!
     
-    @IBOutlet weak var titleHeadquaters: UILabel!
+    @IBOutlet private(set) weak var titleHeadquaters: UILabel!
     
-    @IBOutlet weak var visitButton: UIButton!
-    
+    @IBOutlet private(set) weak var visitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        bindObservables()
         showData()
     }
     
@@ -38,9 +39,8 @@ class DetailsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    init(viewModel: DetailsViewModel) {
+    init(viewModel: DetailsProtocol) {
         self.viewModel = viewModel
-        self.websiteURL = viewModel.website!
         super.init(nibName: Constants.detailsVC, bundle: nil)
     }
     
@@ -48,39 +48,47 @@ class DetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBAction func backButtonPressed(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func visitButtonPressed(_ sender: UIButton) {
-        if websiteURL != Constants.emptyString{
-            let webView = WKWebView(frame: self.view.frame)
-            let url = URL(string: websiteURL)!
-            let urlRequest = URLRequest(url: url)
-            webView.load(urlRequest)
-            
-            let webViewController = UIViewController()
-            webViewController.view = webView
-            self.present(webViewController, animated: true, completion: nil)
-        }else{
-            showToastAlert(controller: self, message: Constants.websitErrorMessage, Seconds: 0.6)
-        }
+    private func bindObservables(){
+        viewModel
+            .websiteURLSubject?
+            .subscribe(onNext: { [weak self] url in
+                guard let self = self else { return }
+                self.openWebView(urlRequest: url)
+            }).disposed(by: disposeBag)
         
+        viewModel
+            .emptyURLSubject?
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.showToastAlert(controller: self, message: Constants.websitErrorMessage, Seconds: 0.6)
+            }).disposed(by: disposeBag)
     }
     
-    func showData(){
+    private func openWebView(urlRequest: URLRequest){
+        let webView = WKWebView(frame: self.view.frame)
+        webView.load(urlRequest)
+        let webViewController = UIViewController()
+        webViewController.view = webView
+        self.present(webViewController, animated: true, completion: nil)
+    }
+    
+    private func showData(){
         nameLabel.text = viewModel.name
         countryLabel.text = viewModel.country
         sloganLabel.text = viewModel.slogan
         titleHeadquaters.text = viewModel.headquaters
-        if(titleHeadquaters.text == nil || titleHeadquaters.text == Constants.emptyString){
-            headquatersLabel.isHidden = true
-        }
-        websiteURL = viewModel.website!
-        
+        headquatersLabel.isHidden = !viewModel.validateText()
     }
     
-    func updateUI(){
+    @IBAction private func backButtonPressed(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction private func visitButtonPressed(_ sender: UIButton) {
+        viewModel.handleUrl()
+    }
+    
+    private func updateUI(){
         navigationLabel.text = Constants.detailsTitle
         navigationView.navigationShadow(opacity: 0.2)
         detailedView.addCornerRadius(cornerRadius: 0.02)
@@ -88,7 +96,7 @@ class DetailsViewController: UIViewController {
         detailedView.detailedShadow(opacity: 0.3)
     }
     
-    func showToastAlert(controller: UIViewController, message: String, Seconds: Double){
+    private func showToastAlert(controller: UIViewController, message: String, Seconds: Double){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = UIColor.clear
         alert.view.layer.cornerRadius = 15

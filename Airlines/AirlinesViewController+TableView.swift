@@ -10,7 +10,6 @@ import UIKit
 
 extension AirlinesViewController: UITableViewDelegate, UITableViewDataSource{
     
-    
     func setupTableView(){
         self.airlineTableView.delegate = self
         self.airlineTableView.dataSource = self
@@ -50,9 +49,5 @@ extension AirlinesViewController: UITableViewDelegate, UITableViewDataSource{
     
     func registerCells(){
         airlineTableView.register(AirlineCellViewController.register(), forCellReuseIdentifier: AirlineCellViewController.identifier)
-    }
-    
-    func reloadTableView(){
-        airlineTableView.reloadData()
     }
 }

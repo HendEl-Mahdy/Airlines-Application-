@@ -8,35 +8,47 @@
 import Foundation
 import CoreData
 import UIKit
+import RxSwift
 
-class AirlinesViewModel{
+protocol AirlinesProtocol {
+    
+    var dataSource: Observable<[AirlineCellViewModel]>? {get}
+    func checkSavingData()
+    func numberOfSections() -> Int
+    func numberOfRows() -> Int
+    func getAirlineData(index: Int) -> AirlinesEntity
+    func searchForName(for searchName: String)
+    
+}
 
+class AirlinesViewModel: AirlinesProtocol {
+    
     private var airlinesArray = [AirlinesEntity]()
+    private var dataManagment = DataManagement()
+    private let airlinesArraySubject = BehaviorSubject<[AirlinesEntity]>(value: [])
     
-    var cellDataSource: Observable<[AirlineCellViewModel]> = Observable(nil)
-   
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    func mapCellData(){
-        self.cellDataSource.value = self.airlinesArray.compactMap({AirlineCellViewModel(airlineData: $0)})
+    var dataSource: Observable<[AirlineCellViewModel]>? {
+        return airlinesArraySubject
+            .map { airlines in
+                self.airlinesArray.compactMap({AirlineCellViewModel(airlineData: $0)})
+            }.asObservable()
     }
     
-    func numberOfSections()->Int{
+    func numberOfSections() -> Int{
         return Constants.numberOfSections
     }
     
-    func numberOfRows()->Int{
+    func numberOfRows() -> Int{
         return airlinesArray.count
     }
     
-    func getAirlineData(index: Int)->AirlinesEntity{
+    func getAirlineData(index: Int) -> AirlinesEntity{
         return airlinesArray[index]
     }
     
     func checkSavingData(){
-        loadData()
         
-        if airlinesArray.isEmpty{
+        if airlinesArray.isEmpty {
             APICaller.getAirlinesData { result in
                 switch result{
                 case .success(let data):
@@ -46,43 +58,25 @@ class AirlinesViewModel{
                 }
             }
         }
+        else {
+            loadData()
+        }
     }
     
-    func insertData(data: [InputData]){
+    private func insertData(data: [InputData]){
         for i in 0...100 {
-            addToCoreData(airlineData: data[i])
+            dataManagment.addToCoreData(airlineData: data[i])
         }
         loadData()
-        mapCellData()
+        airlinesArraySubject.onNext(airlinesArray)
     }
     
-    func addToCoreData(airlineData: InputData){
-        
-        let newAirline = AirlinesEntity(context: context)
-        
-        newAirline.name = airlineData.name
-        newAirline.country = airlineData.country
-        newAirline.head_quaters = airlineData.head_quaters
-        newAirline.slogan = airlineData.slogan
-        newAirline.website = airlineData.website
-        
-        saveAirlines()
-    }
     
-    func saveAirlines(){
-        do{
-            try context.save()
-            
-        }catch{
-            print(Constants.savingError)
-        }
-    }
-    
-    func loadData(){
+    private func loadData(){
         airlinesArray = []
         let request: NSFetchRequest<AirlinesEntity> = AirlinesEntity.fetchRequest()
         do{
-            airlinesArray = try context.fetch(request)
+            airlinesArray = try dataManagment.context.fetch(request)
         }catch{
             print(Constants.requestError)
         }
@@ -94,10 +88,10 @@ class AirlinesViewModel{
         if searchName == Constants.emptyString{
             loadData()
         }else{
-            request.predicate = NSPredicate(format: "name CONTAINS[cd] %@",searchName)
+            request.predicate = NSPredicate(format: Constants.searchFormat, searchName)
             request.sortDescriptors = [NSSortDescriptor(key: Constants.searchKey, ascending: true)]
             do{
-                airlinesArray = try context.fetch(request)
+                airlinesArray = try dataManagment.context.fetch(request)
             }catch{
                 print(Constants.requestError)
             }

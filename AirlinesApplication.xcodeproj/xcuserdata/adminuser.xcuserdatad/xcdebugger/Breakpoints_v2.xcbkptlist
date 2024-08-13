@@ -134,64 +134,257 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C932024-A34B-4894-A64E-421BA14DEDD9"
-            shouldBeEnabled = "Yes"
+            uuid = "964DC33C-EE12-4891-996B-CB6CC00C16F1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AirlineDetails/DetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "urlIsEmpty(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "964DC33C-EE12-4891-996B-CB6CC00C16F1 - 7571a8540d5b3452"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.convertStringToURLRequest(string: Swift.String) -&gt; Foundation.URLRequest"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "266">
+               </Location>
+               <Location
+                  uuid = "964DC33C-EE12-4891-996B-CB6CC00C16F1 - 1f958bac5c3cbcb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.urlIsEmpty(url: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F1458B5-2B65-4D06-BFB2-F721008BF808"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AirlineDetails/DetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "handleUrl()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2F1458B5-2B65-4D06-BFB2-F721008BF808 - 59268f9ec43fab3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.handleUrl() -&gt; ()"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  uuid = "2F1458B5-2B65-4D06-BFB2-F721008BF808 - 59268f9ec43fab3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.handleUrl() -&gt; ()"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "217">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6848FF39-1326-43F9-B112-B1722A725D1A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AirlineDetails/DetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "handleUrl()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6848FF39-1326-43F9-B112-B1722A725D1A - 59268f9ec43fa8f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.handleUrl() -&gt; ()"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "6848FF39-1326-43F9-B112-B1722A725D1A - 59268f9ec43fa8f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AirlinesApplication.DetailsViewModel.handleUrl() -&gt; ()"
+                  moduleName = "AirlinesApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AirlineDetails/DetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "355">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F95949D1-1826-4614-819F-3DBFAC3E9EFE"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AirlineDetails/DetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "visitButtonPressed(_:)"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "openWebView(urlRequest:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB06DCDE-0016-4472-9FF1-C8466BF0C2BB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Airlines/AirlinesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "checkSavingData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43AF3CF0-549D-4614-9FC8-4D5A9C3D8AAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddAirlines/AddAirlinesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "insertAirline(name:country:slogan:headquaters:website:nameLabel:websiteLabel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF447B81-EB30-4F08-81AE-2DB430BA7230"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddAirlines/AddAirlinesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "bindToDismissViewController()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4C932024-A34B-4894-A64E-421BA14DEDD9 - ef3eae40f316bd03"
+                  uuid = "CF447B81-EB30-4F08-81AE-2DB430BA7230 - c1e1d842cf32ce82"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "AirlinesApplication.DetailsViewController.visitButtonPressed(__C.UIButton) -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in AirlinesApplication.AddAirlinesViewController.bindToDismissViewController() -&gt; ()"
                   moduleName = "AirlinesApplication"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adminuser/Desktop/Product/AirlinesApplication/AirlineDetails/DetailsViewController.swift"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AddAirlines/AddAirlinesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "291">
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "194">
                </Location>
                <Location
-                  uuid = "4C932024-A34B-4894-A64E-421BA14DEDD9 - ef3eae40f316bddd"
+                  uuid = "CF447B81-EB30-4F08-81AE-2DB430BA7230 - c1e1d842cf32ce82"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "AirlinesApplication.DetailsViewController.visitButtonPressed(__C.UIButton) -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in AirlinesApplication.AddAirlinesViewController.bindToDismissViewController() -&gt; ()"
                   moduleName = "AirlinesApplication"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adminuser/Desktop/Product/AirlinesApplication/AirlineDetails/DetailsViewController.swift"
+                  urlString = "file:///Users/adminuser/Desktop/Project/Airlines-Application-/AddAirlines/AddAirlinesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "291">
-               </Location>
-               <Location
-                  uuid = "4C932024-A34B-4894-A64E-421BA14DEDD9 - ef3eae40f316ba84"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AirlinesApplication.DetailsViewController.visitButtonPressed(__C.UIButton) -&gt; ()"
-                  moduleName = "AirlinesApplication"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adminuser/Desktop/Product/AirlinesApplication/AirlineDetails/DetailsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1524">
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "62">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79FD0264-F924-4042-8CCC-3331D2E627DE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AddAirlines/AddAirlinesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "insertAirline(name:country:slogan:headquaters:website:nameLabel:websiteLabel:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

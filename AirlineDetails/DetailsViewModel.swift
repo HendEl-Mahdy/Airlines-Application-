@@ -7,14 +7,29 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
-class DetailsViewModel{
-    var airline: AirlinesEntity
+protocol DetailsProtocol{
+    var websiteURLSubject: PublishSubject<URLRequest>? {get}
+    var emptyURLSubject: PublishSubject<Void>? {get}
+    var name: String {get}
+    var country: String? {get}
+    var slogan: String? {get}
+    var headquaters: String? {get}
+    var website: String? {get}
     
-    var name:String
+    func validateText() -> Bool
+    func handleUrl()
+}
+
+struct DetailsViewModel: DetailsProtocol{
+    var emptyURLSubject: RxSwift.PublishSubject<Void>? = PublishSubject<Void>()
+    var websiteURLSubject: RxSwift.PublishSubject<URLRequest>? = PublishSubject<URLRequest>()
+    private var airline: AirlinesEntity
+    var name: String
     var country: String?
     var slogan: String?
-    var headquaters:String?
+    var headquaters: String?
     var website: String?
     
     init(airline: AirlinesEntity) {
@@ -35,5 +50,35 @@ class DetailsViewModel{
         }
     }
     
+    func validateText() -> Bool{
+        if let headquaters = headquaters {
+            if headquaters != Constants.emptyString{
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }
+    
+    func handleUrl(){
+        guard let websiteUrl = website else {return}
+        if urlIsEmpty(url: websiteUrl ){
+            self.emptyURLSubject?.onNext(())
+        }else{
+            self.websiteURLSubject?.onNext(convertStringToURLRequest(url: websiteUrl))
+        }
+    }
+    
+    private func urlIsEmpty(url: String) ->  Bool{
+        return url == Constants.emptyString
+    }
+    
+    private func convertStringToURLRequest(url: String) -> URLRequest{
+        let url = URL(string: url)!
+        let urlRequest = URLRequest(url: url)
+        return urlRequest
+    }
 }
 

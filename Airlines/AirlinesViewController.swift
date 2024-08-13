@@ -5,19 +5,20 @@
 //  Created by admin user on 19/07/2024.
 //
 import UIKit
+import RxSwift
 
-class AirlinesViewController: UIViewController, AddAirlinesViewDelegate{
+class AirlinesViewController: UIViewController{
     
-    var viewModel = AirlinesViewModel()
-    var cellDataSource: [AirlineCellViewModel] = []
+    var viewModel : AirlinesProtocol = AirlinesViewModel()
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var viewLabel: UIView!
-    @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var navigationLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var airlineTableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet private(set) weak var viewLabel: UIView!
+    @IBOutlet private(set) weak var searchView: UIView!
+    @IBOutlet private(set) weak var navigationLabel: UILabel!
+    @IBOutlet private(set) weak var searchTextField: UITextField!
+    @IBOutlet private(set) weak var searchButton: UIButton!
+    @IBOutlet private(set) weak var airlineTableView: UITableView!
+    @IBOutlet private(set) weak var addButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,40 +32,20 @@ class AirlinesViewController: UIViewController, AddAirlinesViewDelegate{
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        search()
-    }
-    
-    @IBAction func addButtonPressed(_ sender: Any) {
-        let addAirlineVC = AddAirlinesViewController(nibName: Constants.addVC,
-                                                     bundle: nil)
-        addAirlineVC.viewModel.delegate = self
-        addAirlineVC.modalPresentationStyle = .pageSheet
-        present(addAirlineVC, animated: true, completion: nil)
-        
-    }
-    
     @objc func search(){
         viewModel.searchForName(for: searchTextField.text!)
         reloadTableView()
     }
     
-    func dataReload() {
-        viewModel.loadData()
-        reloadTableView()
+    private func bindViewModel(){
+        viewModel.dataSource?
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.reloadTableView()
+            }).disposed(by: disposeBag)
     }
     
-    func bindViewModel(){
-        viewModel.cellDataSource.bind { [weak self] airlines in
-            guard let self = self, let airlines = airlines else{
-                return
-            }
-            self.cellDataSource = airlines
-            self.reloadTableView()
-        }
-    }
-    
-    func openDetailsAirline(airline:AirlinesEntity){
+    func openDetailsAirline(airline: AirlinesEntity){
         let detailsViewModel = DetailsViewModel(airline: airline)
         let detailsController = DetailsViewController(viewModel: detailsViewModel)
         
@@ -74,11 +55,26 @@ class AirlinesViewController: UIViewController, AddAirlinesViewDelegate{
     }
     
     @objc func dismissKeyboard() {
-            view.endEditing(true)
+        view.endEditing(true)
     }
     
-
-    func setup(){
+    private func reloadTableView(){
+        airlineTableView.reloadData()
+    }
+    
+    @IBAction private func searchButtonPressed(_ sender: Any) {
+        search()
+    }
+    
+    @IBAction private func addButtonPressed(_ sender: Any) {
+        let addAirlineVC = AddAirlinesViewController(nibName: Constants.addVC,
+                                                     bundle: nil)
+        addAirlineVC.modalPresentationStyle = .pageSheet
+        present(addAirlineVC, animated: true, completion: nil)
+        
+    }
+    
+    private func setup(){
         setupTableView()
         searchTextField.addTarget(self, action: #selector(search), for: .editingChanged)
         
