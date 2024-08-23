@@ -2,12 +2,12 @@
 //  AirlinesTableViewCell.swift
 //  AirlinesApplication
 //
-//  Created by admin user on 19/07/2024.
+//  Created by HendEl-Mahdy on 19/07/2024.
 //
 
 import UIKit
 
-class AirlineCellViewController: UITableViewCell {
+class AirlineTableViewCell: UITableViewCell {
     
     public static var identifier: String{
         get{

@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193AFC6F2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193AFC6E2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift */; };
+		193AFC712C7936F700A3C8D4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193AFC702C7936F700A3C8D4 /* Keyboard.swift */; };
 		195285E02C4C0639003345F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195285DF2C4C0639003345F0 /* AppDelegate.swift */; };
 		195285EA2C4C0639003345F0 /* AirlinesApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 195285E82C4C0639003345F0 /* AirlinesApplication.xcdatamodeld */; };
 		195285EC2C4C063C003345F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195285EB2C4C063C003345F0 /* Assets.xcassets */; };
 		195285EF2C4C063C003345F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195285ED2C4C063C003345F0 /* LaunchScreen.storyboard */; };
-		195285FD2C4C0844003345F0 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195285FC2C4C0844003345F0 /* APICaller.swift */; };
 		195285FF2C4C084E003345F0 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195285FE2C4C084E003345F0 /* AppError.swift */; };
 		195286012C4C088D003345F0 /* AirlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286002C4C088D003345F0 /* AirlinesViewModel.swift */; };
-		195286032C4C0897003345F0 /* AirlineCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286022C4C0897003345F0 /* AirlineCellViewModel.swift */; };
 		195286052C4C08A4003345F0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286042C4C08A4003345F0 /* DetailsViewModel.swift */; };
 		195286072C4C08B0003345F0 /* AddAirlinesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286062C4C08B0003345F0 /* AddAirlinesViewModel.swift */; };
 		1952860D2C4C094B003345F0 /* AirlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952860C2C4C094B003345F0 /* AirlinesViewController.swift */; };
 		1952860F2C4C095F003345F0 /* AirlinesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952860E2C4C095F003345F0 /* AirlinesViewController+TableView.swift */; };
 		195286112C4C0967003345F0 /* AirlinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195286102C4C0967003345F0 /* AirlinesViewController.xib */; };
-		195286172C4C0A64003345F0 /* AirlineCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286162C4C0A64003345F0 /* AirlineCellViewController.swift */; };
-		1952861B2C4C0AC3003345F0 /* AirlineCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1952861A2C4C0AC3003345F0 /* AirlineCellViewController.xib */; };
+		195286172C4C0A64003345F0 /* AirlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286162C4C0A64003345F0 /* AirlineTableViewCell.swift */; };
+		1952861B2C4C0AC3003345F0 /* AirlineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1952861A2C4C0AC3003345F0 /* AirlineTableViewCell.xib */; };
 		1952861D2C4C0AE2003345F0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952861C2C4C0AE2003345F0 /* DetailsViewController.swift */; };
 		1952861F2C4C0AE9003345F0 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1952861E2C4C0AE9003345F0 /* DetailsViewController.xib */; };
 		195286252C4C0B09003345F0 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195286242C4C0B09003345F0 /* InputData.swift */; };
@@ -30,8 +30,11 @@
 		196B6ADD2C52DF6000A66342 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196B6ADC2C52DF6000A66342 /* Constants.swift */; };
 		19B4B12D2C5037690058791F /* AddAirlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B4B12B2C5037690058791F /* AddAirlinesViewController.swift */; };
 		19B4B12E2C5037690058791F /* AddAirlinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19B4B12C2C5037690058791F /* AddAirlinesViewController.xib */; };
-		19B4B1322C52441E0058791F /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B4B1312C52441E0058791F /* TextFieldValidation.swift */; };
-		19CAC88C2C695C9A0090163C /* DataManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CAC88B2C695C9A0090163C /* DataManagement.swift */; };
+		19C160852C7715F2000B14AE /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C160842C7715F2000B14AE /* MockedData.swift */; };
+		19C160892C771783000B14AE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C160882C771783000B14AE /* DataSource.swift */; };
+		19C1608B2C7718B6000B14AE /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1608A2C7718B6000B14AE /* Mapper.swift */; };
+		19C1608E2C771D7A000B14AE /* AirlineRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1608D2C771D7A000B14AE /* AirlineRepository.swift */; };
+		19C160962C771FE1000B14AE /* AirlinesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C160952C771FE1000B14AE /* AirlinesUseCase.swift */; };
 		19D001F72C69D75C008AFF63 /* AirlinesApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D001F62C69D75C008AFF63 /* AirlinesApplicationTests.swift */; };
 		19D001FF2C69E4AB008AFF63 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 19D001FE2C69E4AB008AFF63 /* RxCocoa */; };
 		19D002012C69E4AB008AFF63 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 19D002002C69E4AB008AFF63 /* RxCocoa-Dynamic */; };
@@ -52,23 +55,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		193AFC6E2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlineRepositoryProtocol.swift; sourceTree = "<group>"; };
+		193AFC702C7936F700A3C8D4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		195285DC2C4C0639003345F0 /* AirlinesApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirlinesApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195285DF2C4C0639003345F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		195285E92C4C0639003345F0 /* AirlinesApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirlinesApplication.xcdatamodel; sourceTree = "<group>"; };
 		195285EB2C4C063C003345F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		195285EE2C4C063C003345F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195285F02C4C063C003345F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		195285FC2C4C0844003345F0 /* APICaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		195285FE2C4C084E003345F0 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		195286002C4C088D003345F0 /* AirlinesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirlinesViewModel.swift; sourceTree = "<group>"; };
-		195286022C4C0897003345F0 /* AirlineCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirlineCellViewModel.swift; sourceTree = "<group>"; };
 		195286042C4C08A4003345F0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		195286062C4C08B0003345F0 /* AddAirlinesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAirlinesViewModel.swift; sourceTree = "<group>"; };
 		1952860C2C4C094B003345F0 /* AirlinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirlinesViewController.swift; sourceTree = "<group>"; };
 		1952860E2C4C095F003345F0 /* AirlinesViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AirlinesViewController+TableView.swift"; sourceTree = "<group>"; };
 		195286102C4C0967003345F0 /* AirlinesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirlinesViewController.xib; sourceTree = "<group>"; };
-		195286162C4C0A64003345F0 /* AirlineCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirlineCellViewController.swift; sourceTree = "<group>"; };
-		1952861A2C4C0AC3003345F0 /* AirlineCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirlineCellViewController.xib; sourceTree = "<group>"; };
+		195286162C4C0A64003345F0 /* AirlineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirlineTableViewCell.swift; sourceTree = "<group>"; };
+		1952861A2C4C0AC3003345F0 /* AirlineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirlineTableViewCell.xib; sourceTree = "<group>"; };
 		1952861C2C4C0AE2003345F0 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		1952861E2C4C0AE9003345F0 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		195286242C4C0B09003345F0 /* InputData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
@@ -77,8 +80,11 @@
 		196B6ADC2C52DF6000A66342 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		19B4B12B2C5037690058791F /* AddAirlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAirlinesViewController.swift; sourceTree = "<group>"; };
 		19B4B12C2C5037690058791F /* AddAirlinesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAirlinesViewController.xib; sourceTree = "<group>"; };
-		19B4B1312C52441E0058791F /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
-		19CAC88B2C695C9A0090163C /* DataManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagement.swift; sourceTree = "<group>"; };
+		19C160842C7715F2000B14AE /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
+		19C160882C771783000B14AE /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		19C1608A2C7718B6000B14AE /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		19C1608D2C771D7A000B14AE /* AirlineRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlineRepository.swift; sourceTree = "<group>"; };
+		19C160952C771FE1000B14AE /* AirlinesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesUseCase.swift; sourceTree = "<group>"; };
 		19D001F42C69D75C008AFF63 /* AirlinesApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirlinesApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19D001F62C69D75C008AFF63 /* AirlinesApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesApplicationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,13 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				195285DE2C4C0639003345F0 /* AirlinesApplication */,
-				195285F92C4C07E2003345F0 /* Network */,
-				195285F62C4C067B003345F0 /* Model */,
-				195286082C4C08E9003345F0 /* Airlines */,
-				1952860A2C4C0919003345F0 /* AirlineDetails */,
-				19B4B12A2C5037070058791F /* AddAirlines */,
+				19C1608F2C771DBA000B14AE /* Domain */,
+				19C160942C771F2D000B14AE /* Presentation */,
+				195285F62C4C067B003345F0 /* Data */,
 				195285FA2C4C080B003345F0 /* Utils */,
-				195285FB2C4C0814003345F0 /* Extensions */,
 				19D001F52C69D75C008AFF63 /* AirlinesApplicationTests */,
 				195285DD2C4C0639003345F0 /* Products */,
 			);
@@ -143,30 +146,24 @@
 			path = AirlinesApplication;
 			sourceTree = "<group>";
 		};
-		195285F62C4C067B003345F0 /* Model */ = {
+		195285F62C4C067B003345F0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				19C1608C2C771D32000B14AE /* Repositories */,
+				19C160872C77173D000B14AE /* DataSource */,
+				19C160862C771684000B14AE /* Models */,
+				19C160832C7715BC000B14AE /* MockData */,
 				195285E82C4C0639003345F0 /* AirlinesApplication.xcdatamodeld */,
-				195286242C4C0B09003345F0 /* InputData.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		195285F92C4C07E2003345F0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				195285FC2C4C0844003345F0 /* APICaller.swift */,
-				195285FE2C4C084E003345F0 /* AppError.swift */,
-			);
-			path = Network;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		195285FA2C4C080B003345F0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				19CAC88B2C695C9A0090163C /* DataManagement.swift */,
-				19B4B1312C52441E0058791F /* TextFieldValidation.swift */,
+				195285FB2C4C0814003345F0 /* Extensions */,
 				196B6ADC2C52DF6000A66342 /* Constants.swift */,
+				195285FE2C4C084E003345F0 /* AppError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -176,6 +173,7 @@
 			children = (
 				195286282C4C0B3F003345F0 /* UIViewExtensions.swift */,
 				196B6AD82C528BCA00A66342 /* UIButtonExtensions.swift */,
+				193AFC702C7936F700A3C8D4 /* Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,9 +193,8 @@
 		195286092C4C0903003345F0 /* AirlinesTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				195286022C4C0897003345F0 /* AirlineCellViewModel.swift */,
-				195286162C4C0A64003345F0 /* AirlineCellViewController.swift */,
-				1952861A2C4C0AC3003345F0 /* AirlineCellViewController.xib */,
+				195286162C4C0A64003345F0 /* AirlineTableViewCell.swift */,
+				1952861A2C4C0AC3003345F0 /* AirlineTableViewCell.xib */,
 			);
 			path = AirlinesTableViewCell;
 			sourceTree = "<group>";
@@ -220,6 +217,74 @@
 				19B4B12C2C5037690058791F /* AddAirlinesViewController.xib */,
 			);
 			path = AddAirlines;
+			sourceTree = "<group>";
+		};
+		19C160832C7715BC000B14AE /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				19C160842C7715F2000B14AE /* MockedData.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		19C160862C771684000B14AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				195286242C4C0B09003345F0 /* InputData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19C160872C77173D000B14AE /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				19C160882C771783000B14AE /* DataSource.swift */,
+				19C1608A2C7718B6000B14AE /* Mapper.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		19C1608C2C771D32000B14AE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				19C1608D2C771D7A000B14AE /* AirlineRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		19C1608F2C771DBA000B14AE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				19C160902C771E1A000B14AE /* UseCases */,
+				19C160912C771E2B000B14AE /* Repositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		19C160902C771E1A000B14AE /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				19C160952C771FE1000B14AE /* AirlinesUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		19C160912C771E2B000B14AE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				193AFC6E2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		19C160942C771F2D000B14AE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				195286082C4C08E9003345F0 /* Airlines */,
+				1952860A2C4C0919003345F0 /* AirlineDetails */,
+				19B4B12A2C5037070058791F /* AddAirlines */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		19D001F52C69D75C008AFF63 /* AirlinesApplicationTests */ = {
@@ -326,7 +391,7 @@
 			files = (
 				195285EF2C4C063C003345F0 /* LaunchScreen.storyboard in Resources */,
 				19B4B12E2C5037690058791F /* AddAirlinesViewController.xib in Resources */,
-				1952861B2C4C0AC3003345F0 /* AirlineCellViewController.xib in Resources */,
+				1952861B2C4C0AC3003345F0 /* AirlineTableViewCell.xib in Resources */,
 				1952861F2C4C0AE9003345F0 /* DetailsViewController.xib in Resources */,
 				195285EC2C4C063C003345F0 /* Assets.xcassets in Resources */,
 				195286112C4C0967003345F0 /* AirlinesViewController.xib in Resources */,
@@ -347,22 +412,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C1608E2C771D7A000B14AE /* AirlineRepository.swift in Sources */,
+				19C160892C771783000B14AE /* DataSource.swift in Sources */,
+				19C160852C7715F2000B14AE /* MockedData.swift in Sources */,
 				195286252C4C0B09003345F0 /* InputData.swift in Sources */,
 				196B6ADD2C52DF6000A66342 /* Constants.swift in Sources */,
-				19B4B1322C52441E0058791F /* TextFieldValidation.swift in Sources */,
+				19C1608B2C7718B6000B14AE /* Mapper.swift in Sources */,
 				195285FF2C4C084E003345F0 /* AppError.swift in Sources */,
 				195286072C4C08B0003345F0 /* AddAirlinesViewModel.swift in Sources */,
 				19B4B12D2C5037690058791F /* AddAirlinesViewController.swift in Sources */,
-				195286032C4C0897003345F0 /* AirlineCellViewModel.swift in Sources */,
 				1952860F2C4C095F003345F0 /* AirlinesViewController+TableView.swift in Sources */,
 				1952860D2C4C094B003345F0 /* AirlinesViewController.swift in Sources */,
-				19CAC88C2C695C9A0090163C /* DataManagement.swift in Sources */,
 				195285E02C4C0639003345F0 /* AppDelegate.swift in Sources */,
-				195285FD2C4C0844003345F0 /* APICaller.swift in Sources */,
 				195286292C4C0B3F003345F0 /* UIViewExtensions.swift in Sources */,
-				195286172C4C0A64003345F0 /* AirlineCellViewController.swift in Sources */,
+				195286172C4C0A64003345F0 /* AirlineTableViewCell.swift in Sources */,
+				193AFC712C7936F700A3C8D4 /* Keyboard.swift in Sources */,
 				195286052C4C08A4003345F0 /* DetailsViewModel.swift in Sources */,
+				193AFC6F2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift in Sources */,
 				196B6AD92C528BCA00A66342 /* UIButtonExtensions.swift in Sources */,
+				19C160962C771FE1000B14AE /* AirlinesUseCase.swift in Sources */,
 				195285EA2C4C0639003345F0 /* AirlinesApplication.xcdatamodeld in Sources */,
 				195286012C4C088D003345F0 /* AirlinesViewModel.swift in Sources */,
 				1952861D2C4C0AE2003345F0 /* DetailsViewController.swift in Sources */,

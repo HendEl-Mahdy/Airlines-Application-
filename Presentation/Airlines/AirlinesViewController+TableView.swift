@@ -2,7 +2,7 @@
 //  AirlinesViewController+TableView.swift
 //  AirlinesApplication
 //
-//  Created by admin user on 19/07/2024.
+//  Created by HendEl-Mahdy on 19/07/2024.
 //
 
 import Foundation
@@ -18,16 +18,16 @@ extension AirlinesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+        return viewModel.getNumberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
+        return viewModel.getNumberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AirlineCellViewController.identifier, for: indexPath) as? AirlineCellViewController else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AirlineTableViewCell.identifier, for: indexPath) as? AirlineTableViewCell else{
             return UITableViewCell()
         }
         
@@ -48,6 +48,6 @@ extension AirlinesViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func registerCells(){
-        airlineTableView.register(AirlineCellViewController.register(), forCellReuseIdentifier: AirlineCellViewController.identifier)
+        airlineTableView.register(AirlineTableViewCell.register(), forCellReuseIdentifier: AirlineTableViewCell.identifier)
     }
 }

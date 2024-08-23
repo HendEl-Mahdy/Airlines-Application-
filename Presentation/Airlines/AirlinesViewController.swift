@@ -2,7 +2,7 @@
 //  AirlinesViewController.swift
 //  AirlinesApplication
 //
-//  Created by admin user on 19/07/2024.
+//  Created by HendEl-Mahdy on 19/07/2024.
 //
 import UIKit
 import RxSwift
@@ -23,8 +23,9 @@ class AirlinesViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        viewModel.checkSavingData()
+        viewModel.getAirlines()
         bindViewModel()
+        setupDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,17 +33,25 @@ class AirlinesViewController: UIViewController{
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    @objc func search(){
-        viewModel.searchForName(for: searchTextField.text!)
-        reloadTableView()
+    @objc private func search(){
+        if let searchText = searchTextField.text {
+            viewModel.searchForName(for: searchText)
+        }
     }
     
     private func bindViewModel(){
-        viewModel.dataSource?
+        viewModel.airlinesArraySubject
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.reloadTableView()
-            }).disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(_):
+                    self.reloadTableView()
+                case .failure(let error):
+                    self.showToastAlert(controller: self, message: "\(error.networkError)", Seconds: 1)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func openDetailsAirline(airline: AirlinesEntity){
@@ -54,16 +63,13 @@ class AirlinesViewController: UIViewController{
         }
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     private func reloadTableView(){
         airlineTableView.reloadData()
     }
     
     @IBAction private func searchButtonPressed(_ sender: Any) {
         search()
+        dismissKeyboard()
     }
     
     @IBAction private func addButtonPressed(_ sender: Any) {
@@ -71,6 +77,17 @@ class AirlinesViewController: UIViewController{
                                                      bundle: nil)
         addAirlineVC.modalPresentationStyle = .pageSheet
         present(addAirlineVC, animated: true, completion: nil)
+        
+    }
+    
+    private func showToastAlert(controller: UIViewController, message: String, Seconds: Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.clear
+        alert.view.layer.cornerRadius = 15
+        controller.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Seconds){
+            alert.dismiss(animated: true)
+        }
         
     }
     
@@ -87,4 +104,15 @@ class AirlinesViewController: UIViewController{
         searchButton.addCornerRadius(cornerRadius: 0.2)
     }
     
+}
+
+extension AirlinesViewController: UITextFieldDelegate{
+    private func setupDelegate(){
+        searchTextField.delegate = self
+        searchTextField.returnKeyType = .go
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

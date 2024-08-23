@@ -2,7 +2,7 @@
 //  DetailsViewController.swift
 //  AirlinesApplication
 //
-//  Created by admin user on 20/07/2024.
+//  Created by HendEl-Mahdy on 20/07/2024.
 //
 
 import UIKit
@@ -15,16 +15,13 @@ class DetailsViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     @IBOutlet private(set) weak var navigationView: UIView!
-    @IBOutlet private(set) weak var detailedView: UIView!
-    
     @IBOutlet private(set) weak var navigationLabel: UILabel!
+    @IBOutlet private(set) weak var detailedView: UIView!
     @IBOutlet private(set) weak var nameLabel: UILabel!
     @IBOutlet private(set) weak var countryLabel: UILabel!
     @IBOutlet private(set) weak var sloganLabel: UILabel!
     @IBOutlet private(set) weak var headquatersLabel: UILabel!
-    
     @IBOutlet private(set) weak var titleHeadquaters: UILabel!
-    
     @IBOutlet private(set) weak var visitButton: UIButton!
     
     override func viewDidLoad() {
@@ -77,7 +74,7 @@ class DetailsViewController: UIViewController {
         countryLabel.text = viewModel.country
         sloganLabel.text = viewModel.slogan
         titleHeadquaters.text = viewModel.headquaters
-        headquatersLabel.isHidden = !viewModel.validateText()
+        headquatersLabel.isHidden = viewModel.validateText()
     }
     
     @IBAction private func backButtonPressed(_ sender: UIButton) {
