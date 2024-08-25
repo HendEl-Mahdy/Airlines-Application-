@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol AirlineRepositoryProtocol {
-    func fetchAirlines() -> Observable<Result<[AirlinesEntity], AppError>>
-    func searchAirlines(for searchName: String) -> Observable<Result<[AirlinesEntity], AppError>>
-    func addAirline(_ airline: InputData) -> Observable<Result<Void, AppError>>
+    func fetchAirlines() -> Observable<Result<[DataModel], AppError>>
+    func searchAirlines(for searchName: String) -> Observable<Result<[DataModel], AppError>>
+    func addAirline(_ airline: DataModel) -> Observable<Result<Void, AppError>>
 }

@@ -16,15 +16,15 @@ class AirlineRepository : AirlineRepositoryProtocol {
         self.dataSource = localDataSource
     }
     
-    func fetchAirlines() -> RxSwift.Observable<Result<[AirlinesEntity], AppError>> {
+    func fetchAirlines() -> RxSwift.Observable<Result<[DataModel], AppError>> {
         return dataSource.getAirlines()
     }
     
-    func searchAirlines(for searchName: String) -> RxSwift.Observable<Result<[AirlinesEntity], AppError>> {
+    func searchAirlines(for searchName: String) -> RxSwift.Observable<Result<[DataModel], AppError>> {
         return dataSource.searchAirlines(for: searchName)
     }
     
-    func addAirline(_ airline: InputData) -> RxSwift.Observable<Result<Void, AppError>> {
+    func addAirline(_ airline: DataModel) -> RxSwift.Observable<Result<Void, AppError>> {
         return dataSource.addAirline(airline)
     }
 }

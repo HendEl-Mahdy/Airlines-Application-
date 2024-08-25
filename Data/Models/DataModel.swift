@@ -6,8 +6,7 @@
 //
 import Foundation
 
-
-struct InputData {
+struct DataModel {
     let name: String
     let country: String?
     let slogan: String?

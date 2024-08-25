@@ -32,7 +32,7 @@ extension AirlinesViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         let cellViewModel = viewModel.getAirlineData(index: indexPath.row).name
-        cell.setupCell(name: cellViewModel!)
+        cell.setupCell(name: cellViewModel)
         
         return cell
     }

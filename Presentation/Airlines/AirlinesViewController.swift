@@ -54,7 +54,7 @@ class AirlinesViewController: UIViewController{
             .disposed(by: disposeBag)
     }
     
-    func openDetailsAirline(airline: AirlinesEntity){
+    func openDetailsAirline(airline: DataModel){
         let detailsViewModel = DetailsViewModel(airline: airline)
         let detailsController = DetailsViewController(viewModel: detailsViewModel)
         

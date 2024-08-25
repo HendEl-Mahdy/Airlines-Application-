@@ -13,7 +13,7 @@ protocol AirlinesProtocol {
     func getAirlines()
     func getNumberOfSections() -> Int
     func getNumberOfRows() -> Int
-    func getAirlineData(index: Int) -> AirlinesEntity
+    func getAirlineData(index: Int) -> DataModel
     func searchForName(for searchName: String)
 }
 
@@ -23,7 +23,7 @@ class AirlinesViewModel: AirlinesProtocol {
     
     private let airlinesUseCase : AirlinesUseCaseProtocol
     private let disposeBag = DisposeBag()
-    private var airlinesArray = [AirlinesEntity]()
+    private var airlinesArray = [DataModel]()
     
     
     init(airlinesUseCase: AirlinesUseCaseProtocol = AirlinesUseCase()){
@@ -38,7 +38,7 @@ class AirlinesViewModel: AirlinesProtocol {
         return airlinesArray.count
     }
     
-    func getAirlineData(index: Int) -> AirlinesEntity{
+    func getAirlineData(index: Int) -> DataModel{
         return airlinesArray[index]
     }
     

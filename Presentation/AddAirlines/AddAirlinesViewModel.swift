@@ -27,7 +27,7 @@ class AddAirlinesViewModel: AddAirlinesProtocol{
     func insertAirline(name: String, country: String?, slogan: String?, headquaters: String?,
                        website: String){
         
-        let airlineData = InputData(name: name, country: country, slogan: slogan, head_quaters: headquaters, website: website)
+        let airlineData = DataModel(name: name, country: country, slogan: slogan, head_quaters: headquaters, website: website)
         
         useCase.addAirline(airline: airlineData)
             .subscribe(onNext: { [weak self] result in

@@ -30,11 +30,11 @@ struct DetailsViewModel: DetailsProtocol{
     var headquaters: String?
     var website: String?
     
-    private var airline: AirlinesEntity
+    private var airline: DataModel
     
-    init(airline: AirlinesEntity) {
+    init(airline: DataModel) {
         self.airline = airline
-        self.name = airline.name ?? Constants.emptyString
+        self.name = airline.name 
         self.country = airline.country
         self.slogan = airline.slogan
         self.headquaters = airline.head_quaters
