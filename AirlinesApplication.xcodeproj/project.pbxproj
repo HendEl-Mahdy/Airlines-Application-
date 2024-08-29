@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193730822C7DBD160090E092 /* DetailsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193730812C7DBD160090E092 /* DetailsViewModelTest.swift */; };
+		193730852C7DD14F0090E092 /* AddAirlinesViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193730842C7DD14F0090E092 /* AddAirlinesViewModelTest.swift */; };
 		193AFC6F2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193AFC6E2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift */; };
 		193AFC712C7936F700A3C8D4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193AFC702C7936F700A3C8D4 /* Keyboard.swift */; };
+		194100462C7C814400B8B1C5 /* RxTest-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 19D002082C69E4AB008AFF63 /* RxTest-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		195285E02C4C0639003345F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195285DF2C4C0639003345F0 /* AppDelegate.swift */; };
 		195285EA2C4C0639003345F0 /* AirlinesApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 195285E82C4C0639003345F0 /* AirlinesApplication.xcdatamodeld */; };
 		195285EC2C4C063C003345F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195285EB2C4C063C003345F0 /* Assets.xcassets */; };
@@ -30,9 +33,6 @@
 		196B6ADD2C52DF6000A66342 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196B6ADC2C52DF6000A66342 /* Constants.swift */; };
 		198AF9E42C7B023000602D30 /* AirlinesViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E32C7B023000602D30 /* AirlinesViewModelTest.swift */; };
 		198AF9E62C7B030F00602D30 /* AirlinesUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E52C7B030F00602D30 /* AirlinesUseCaseMock.swift */; };
-		198AF9E82C7B034500602D30 /* AirlinesUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E72C7B034500602D30 /* AirlinesUseCaseTest.swift */; };
-		198AF9EB2C7B114700602D30 /* DataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9EA2C7B114700602D30 /* DataSourceMock.swift */; };
-		198AF9ED2C7B124C00602D30 /* MapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9EC2C7B124C00602D30 /* MapperTest.swift */; };
 		19B4B12D2C5037690058791F /* AddAirlinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B4B12B2C5037690058791F /* AddAirlinesViewController.swift */; };
 		19B4B12E2C5037690058791F /* AddAirlinesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19B4B12C2C5037690058791F /* AddAirlinesViewController.xib */; };
 		19C160852C7715F2000B14AE /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C160842C7715F2000B14AE /* MockedData.swift */; };
@@ -58,7 +58,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		194100472C7C814400B8B1C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				194100462C7C814400B8B1C5 /* RxTest-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		193730812C7DBD160090E092 /* DetailsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTest.swift; sourceTree = "<group>"; };
+		193730842C7DD14F0090E092 /* AddAirlinesViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAirlinesViewModelTest.swift; sourceTree = "<group>"; };
 		193AFC6E2C7906A000A3C8D4 /* AirlineRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlineRepositoryProtocol.swift; sourceTree = "<group>"; };
 		193AFC702C7936F700A3C8D4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		195285DC2C4C0639003345F0 /* AirlinesApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirlinesApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,9 +100,6 @@
 		196B6ADC2C52DF6000A66342 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		198AF9E32C7B023000602D30 /* AirlinesViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesViewModelTest.swift; sourceTree = "<group>"; };
 		198AF9E52C7B030F00602D30 /* AirlinesUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesUseCaseMock.swift; sourceTree = "<group>"; };
-		198AF9E72C7B034500602D30 /* AirlinesUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirlinesUseCaseTest.swift; sourceTree = "<group>"; };
-		198AF9EA2C7B114700602D30 /* DataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceMock.swift; sourceTree = "<group>"; };
-		198AF9EC2C7B124C00602D30 /* MapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperTest.swift; sourceTree = "<group>"; };
 		19B4B12B2C5037690058791F /* AddAirlinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAirlinesViewController.swift; sourceTree = "<group>"; };
 		19B4B12C2C5037690058791F /* AddAirlinesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAirlinesViewController.xib; sourceTree = "<group>"; };
 		19C160842C7715F2000B14AE /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
@@ -299,10 +312,9 @@
 			isa = PBXGroup;
 			children = (
 				198AF9E32C7B023000602D30 /* AirlinesViewModelTest.swift */,
+				193730812C7DBD160090E092 /* DetailsViewModelTest.swift */,
+				193730842C7DD14F0090E092 /* AddAirlinesViewModelTest.swift */,
 				198AF9E52C7B030F00602D30 /* AirlinesUseCaseMock.swift */,
-				198AF9E72C7B034500602D30 /* AirlinesUseCaseTest.swift */,
-				198AF9EA2C7B114700602D30 /* DataSourceMock.swift */,
-				198AF9EC2C7B124C00602D30 /* MapperTest.swift */,
 			);
 			path = AirlinesApplicationTests;
 			sourceTree = "<group>";
@@ -340,6 +352,7 @@
 				19D001F02C69D75C008AFF63 /* Sources */,
 				19D001F12C69D75C008AFF63 /* Frameworks */,
 				19D001F22C69D75C008AFF63 /* Resources */,
+				194100472C7C814400B8B1C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -453,11 +466,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198AF9EB2C7B114700602D30 /* DataSourceMock.swift in Sources */,
-				198AF9E82C7B034500602D30 /* AirlinesUseCaseTest.swift in Sources */,
-				198AF9ED2C7B124C00602D30 /* MapperTest.swift in Sources */,
 				198AF9E62C7B030F00602D30 /* AirlinesUseCaseMock.swift in Sources */,
+				193730852C7DD14F0090E092 /* AddAirlinesViewModelTest.swift in Sources */,
 				198AF9E42C7B023000602D30 /* AirlinesViewModelTest.swift in Sources */,
+				193730822C7DBD160090E092 /* DetailsViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +627,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -641,6 +654,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

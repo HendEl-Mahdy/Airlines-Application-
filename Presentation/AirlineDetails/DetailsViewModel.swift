@@ -7,47 +7,56 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol DetailsProtocol{
-    var websiteURLSubject: PublishSubject<URLRequest>? {get}
-    var emptyURLSubject: PublishSubject<Void>? {get}
+    var websiteURLDriver: Driver<URLRequest>? { get }
+    var emptyURLDriver: Driver<Void>? { get }
+    
     var name: String {get}
     var country: String? {get}
     var slogan: String? {get}
     var headquaters: String? {get}
     var website: String? {get}
+    
     func validateText() -> Bool
     func handleUrl()
 }
 
 struct DetailsViewModel: DetailsProtocol{
+    private var emptyURLSubject: RxSwift.PublishSubject<Void>? = PublishSubject<Void>()
+    private var websiteURLSubject: RxSwift.PublishSubject<URLRequest>? = PublishSubject<URLRequest>()
     
-    var emptyURLSubject: RxSwift.PublishSubject<Void>? = PublishSubject<Void>()
-    var websiteURLSubject: RxSwift.PublishSubject<URLRequest>? = PublishSubject<URLRequest>()
+    var websiteURLDriver: Driver<URLRequest>? {
+        return websiteURLSubject?.asDriver(onErrorJustReturn: URLRequest(url: URL(string: Constants.space)!))
+    }
+    
+    var emptyURLDriver: Driver<Void>? {
+        return emptyURLSubject?.asDriver(onErrorJustReturn: ())
+    }
+    
     var name: String
     var country: String?
     var slogan: String?
     var headquaters: String?
     var website: String?
     
-    private var airline: DataModel
-    
     init(airline: DataModel) {
-        self.airline = airline
-        self.name = airline.name 
+        self.name = airline.name
         self.country = airline.country
         self.slogan = airline.slogan
         self.headquaters = airline.head_quaters
         
-        if let websiteLink = airline.website {
-            if !websiteLink.contains(Constants.validURL) {
+        websiteHandling(website: airline.website ?? Constants.emptyString)
+        
+    }
+    
+    private mutating func websiteHandling(website: String){
+            if !website.contains(Constants.validURL) {
                 self.website = Constants.emptyString
             } else {
-                self.website = websiteLink
+                self.website = website
             }
-        } else {
-            self.website = Constants.emptyString
-        }
     }
     
     func validateText() -> Bool{

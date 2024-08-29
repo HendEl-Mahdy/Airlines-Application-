@@ -29,12 +29,12 @@ extension UIViewController{
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        adjustContentForKeyboard(show: false, keyboardHeight: 0)
+        adjustContentForKeyboard(show: false, keyboardHeight: CGFloat(Constants.keyboardHeight))
     }
     
     func adjustContentForKeyboard(show: Bool, keyboardHeight: CGFloat) {
-        let adjustmentHeight = show ? keyboardHeight : 0
-        view.frame.origin.y = -adjustmentHeight
+        let adjustmentHeight = show ? Int(keyboardHeight) : Constants.keyboardHeight
+        view.frame.origin.y = CGFloat(-adjustmentHeight)
     }
     
     @objc func dismissKeyboard() {

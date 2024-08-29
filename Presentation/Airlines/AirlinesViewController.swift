@@ -40,7 +40,7 @@ class AirlinesViewController: UIViewController{
     }
     
     private func bindViewModel(){
-        viewModel.airlinesArraySubject
+        viewModel.airlinesObservable
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
                 guard let self = self else { return }
@@ -48,10 +48,11 @@ class AirlinesViewController: UIViewController{
                 case .success(_):
                     self.reloadTableView()
                 case .failure(let error):
-                    self.showToastAlert(controller: self, message: "\(error.networkError)", Seconds: 1)
+                    self.showToastAlert(controller: self, message: "\(error.networkError)", Seconds: Double(Constants.airlineToastWait))
                 }
             })
             .disposed(by: disposeBag)
+        
     }
     
     func openDetailsAirline(airline: DataModel){
@@ -83,7 +84,7 @@ class AirlinesViewController: UIViewController{
     private func showToastAlert(controller: UIViewController, message: String, Seconds: Double){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = UIColor.clear
-        alert.view.layer.cornerRadius = 15
+        alert.view.layer.cornerRadius = CGFloat(Constants.toastCornerRadius)
         controller.present(alert, animated: true)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Seconds){
             alert.dismiss(animated: true)
@@ -96,14 +97,13 @@ class AirlinesViewController: UIViewController{
         searchTextField.addTarget(self, action: #selector(search), for: .editingChanged)
         
         navigationLabel.text = Constants.airlineTitle
-        viewLabel.navigationShadow(opacity: 0.2)
+        viewLabel.navigationShadow(opacity: Float(Constants.airlineNavigationOpacity))
         
-        addButton.frame = CGRect(x: 160, y: 100, width: 62, height: 62)
-        addButton.redCircleButton(cornerRadius: 0.5, shadowRadius: 5.0, shadowOpacity: 0.2)
+        addButton.frame = CGRect(x: Constants.addButton_frame_x, y: Constants.addButton_frame_y, width: Constants.addButton_frame_width, height: Constants.addButton_frame_height)
+        addButton.redCircleButton(cornerRadius: Constants.addButton_cornerRadius, shadowRadius: Constants.addButton_shadowRadius, shadowOpacity: Float(Constants.addButton_shadowOpacity))
         
-        searchButton.addCornerRadius(cornerRadius: 0.2)
+        searchButton.addCornerRadius(cornerRadius: Constants.searchButton_cornerRaduis)
     }
-    
 }
 
 extension AirlinesViewController: UITextFieldDelegate{

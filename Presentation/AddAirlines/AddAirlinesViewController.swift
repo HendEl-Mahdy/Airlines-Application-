@@ -46,16 +46,50 @@ class AddAirlinesViewController: UIViewController {
     }
     
     private func bindToDismissViewController(){
+
         viewModel.dismissViewControllerTrigger?
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] result in
+                switch result{
+                case .success(_):
+                    self?.dismiss(animated: true, completion: nil)
+                    self?.textFieldReset(self?.nameTextField, self?.errorNameLabel)
+                    self?.textFieldReset(self?.websiteTextField, self?.errorWebsiteLabel)
+                case .failure(let error):
+                    self?.showToastAlert(controller: self, message: "\(error.networkError)", Seconds: Double(Constants.addAirlineToastWait))
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    private func bindToValidateTextField(){
+        
+        textFieldReset(nameTextField, errorNameLabel)
+        textFieldReset(websiteTextField, errorWebsiteLabel)
+        
+        viewModel.nameObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self]  in
+                if let nameTextField = self?.nameTextField, let errorNameLabel = self?.errorNameLabel{
+                    
+                    self?.validationError(nameTextField, errorNameLabel)
+                }
+            }).disposed(by: disposeBag)
+        
+        viewModel.websiteObservable
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self]  in
+                
+                if let websiteTextField = self?.websiteTextField, let errorWebsiteLabel = self?.errorWebsiteLabel {
+                    
+                    self?.validationError(websiteTextField, errorWebsiteLabel)
+                }
+            }).disposed(by: disposeBag)
+        
     }
     
     @IBAction private func confirmButtonPressed(_ sender: Any) {
-        validateInputData(nameTextField, websiteTextField, errorNameLabel, errorWebsiteLabel)
+        bindToValidateTextField()
+        addAirline()
     }
     
     @IBAction private func cancelButtonPressed(_ sender: Any) {
@@ -63,15 +97,25 @@ class AddAirlinesViewController: UIViewController {
     }
     
     private func setup(){
-        container.round(radius: 15)
+        container.round(radius: CGFloat(Constants.addAirline_container_radius))
         container.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        cancelButton.addBorder(color: .gray, width: 0.3)
-        cancelButton.addCornerRadius(cornerRadius: 0.02)
-        confirmButton.addCornerRadius(cornerRadius: 0.02)
+        cancelButton.addBorder(color: .gray, width: Constants.addAirline_cancelButton_width)
+        cancelButton.addCornerRadius(cornerRadius: Constants.addAirline_cancelButton_cornerRadius)
+        confirmButton.addCornerRadius(cornerRadius: Constants.addAirline_confirmButton_cornerRadius)
         
         errorNameLabel.isHidden =  true
         errorWebsiteLabel.isHidden = true
+        
+    }
+    private func showToastAlert(controller: UIViewController?, message: String, Seconds: Double){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.clear
+        alert.view.layer.cornerRadius = CGFloat(Constants.toastCornerRadius)
+        controller?.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Seconds){
+            alert.dismiss(animated: true)
+        }
         
     }
     
@@ -79,50 +123,24 @@ class AddAirlinesViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
 }
 
 extension AddAirlinesViewController: UITextFieldDelegate{
     
     //  MARK: - TextField Validation
     
-    private func validateInputData(_ name: UITextField, _ website: UITextField,
-                                   _ nameLabel: UILabel, _ websiteLabel: UILabel ){
-        
-        if name.text == Constants.emptyString && !website.text!.contains(Constants.validURL){
-            textFieldReset(name, nameLabel)
-            textFieldReset(website, websiteLabel)
-            validationError(name, nameLabel)
-            validationError(website, websiteLabel)
-        }
-        else if name.text != Constants.emptyString && !website.text!.contains(Constants.validURL){
-            textFieldReset(name, nameLabel)
-            textFieldReset(website, websiteLabel)
-            validationError(website, websiteLabel)
-        }
-        else if name.text == Constants.emptyString && website.text!.contains(Constants.validURL){
-            textFieldReset(name, nameLabel)
-            textFieldReset(website, websiteLabel)
-            validationError(name, nameLabel)
-        }
-        else{
-            textFieldReset(name, nameLabel)
-            textFieldReset(website, websiteLabel)
-            addAirline()
-            
-        }
+    private func validationError(_ textfield: UITextField?, _ errorLabel: UILabel?){
+        errorLabel?.isHidden = false
+        textfield?.layer.borderColor = UIColor.red.cgColor
+        textfield?.layer.borderWidth = Constants.addAirline_textField_validationError_borderWidth
+        textfield?.layer.cornerRadius = Constants.addAirline_textField_validationError_cornerRadius
     }
-    
-    private func validationError(_ textfield: UITextField, _ errorLabel: UILabel){
-        errorLabel.isHidden = false
-        textfield.layer.borderColor = UIColor.red.cgColor
-        textfield.layer.borderWidth = 1.0
-        textfield.layer.cornerRadius = 5.0
-    }
-    private func textFieldReset(_ textfield: UITextField, _ errorLabel: UILabel){
-        textfield.layer.borderColor = UIColor.lightGray.cgColor
-        textfield.layer.borderWidth = 0
-        textfield.layer.cornerRadius = 5.0
-        errorLabel.isHidden = true
+    private func textFieldReset(_ textfield: UITextField?, _ errorLabel: UILabel?){
+        textfield?.layer.borderColor = UIColor.lightGray.cgColor
+        textfield?.layer.borderWidth = CGFloat(Constants.addAirline_textField_textFieldReset_borderWidth)
+        textfield?.layer.cornerRadius = Constants.addAirline_textField_textFieldReset_cornerRadius
+        errorLabel?.isHidden = true
     }
     
     // MARK: - Keyboard Handling
@@ -152,7 +170,7 @@ extension AddAirlinesViewController: UITextFieldDelegate{
         case headquatersTextField:
             websiteTextField.becomeFirstResponder()
         case websiteTextField:
-            validateInputData(nameTextField, websiteTextField, errorNameLabel, errorWebsiteLabel)
+            addAirline()
             textField.resignFirstResponder()
         default:
             textField.resignFirstResponder()

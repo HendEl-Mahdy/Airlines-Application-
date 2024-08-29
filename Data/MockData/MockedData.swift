@@ -7,7 +7,7 @@
 
 import Foundation
 
-let mockData: [DataModel] = [
+ var mockData: [DataModel] = [
     DataModel(name: "Airwave Airlines", country: "United States", slogan: "Fly High with Us", head_quaters: "New York, USA", website: "www.airwave.com"),
     DataModel(name: "Skyline Airways", country: "United Kingdom", slogan: "Touch the Sky", head_quaters: "London, UK", website: "www.skylineairways.co.uk"),
     DataModel(name: "Oceanic Flights", country: "Australia", slogan: "Where the Sky Meets the Sea", head_quaters: "Sydney, Australia", website: "www.oceanicflights.com.au"),

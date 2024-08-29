@@ -42,23 +42,25 @@ class DetailsViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.fatalError)
     }
     
     private func bindObservables(){
         viewModel
-            .websiteURLSubject?
-            .subscribe(onNext: { [weak self] url in
+            .websiteURLDriver?
+            .drive(onNext: { [weak self] url in
                 guard let self = self else { return }
                 self.openWebView(urlRequest: url)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
         
         viewModel
-            .emptyURLSubject?
-            .subscribe(onNext: { [weak self] in
+            .emptyURLDriver?
+            .drive(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.showToastAlert(controller: self, message: Constants.websitErrorMessage, Seconds: 0.6)
-            }).disposed(by: disposeBag)
+                self.showToastAlert(controller: self, message: Constants.websitErrorMessage, Seconds: Constants.detailsToastWait)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func openWebView(urlRequest: URLRequest){
@@ -87,16 +89,17 @@ class DetailsViewController: UIViewController {
     
     private func updateUI(){
         navigationLabel.text = Constants.detailsTitle
-        navigationView.navigationShadow(opacity: 0.2)
-        detailedView.addCornerRadius(cornerRadius: 0.02)
-        visitButton.addCornerRadius(cornerRadius: 0.02)
-        detailedView.detailedShadow(opacity: 0.3)
+        navigationView.navigationShadow(opacity: Float(Constants.details_navigationView_shadowOpacity))
+        detailedView.addCornerRadius(cornerRadius: Constants.details_detailedView_cornerRadius)
+        detailedView.detailedShadow(opacity: Float(Constants.details_detailedView_shadowOpacity))
+        visitButton.addCornerRadius(cornerRadius: Constants.details_visitButton_cornerRadius)
+        
     }
     
     private func showToastAlert(controller: UIViewController, message: String, Seconds: Double){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = UIColor.clear
-        alert.view.layer.cornerRadius = 15
+        alert.view.layer.cornerRadius = CGFloat(Constants.toastCornerRadius)
         controller.present(alert, animated: true)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Seconds){
             alert.dismiss(animated: true)

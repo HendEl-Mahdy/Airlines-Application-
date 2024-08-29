@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct DataModel {
+struct DataModel: Equatable {
     let name: String
     let country: String?
     let slogan: String?
