@@ -46,8 +46,8 @@ class AddAirlinesViewController: UIViewController {
     }
     
     private func bindToDismissViewController(){
-
-        viewModel.dismissViewControllerTrigger?
+        
+        viewModel.dismissViewControllerTrigger
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
                 switch result{

@@ -9,21 +9,43 @@ import RxSwift
 
 
 protocol AddAirlinesProtocol{
-    var nameObservable: PublishSubject<Void> { get }
-    var websiteObservable: PublishSubject<Void> { get }
-    var dismissViewControllerTrigger: PublishSubject<Result<Void, AppError>>? {get}
+    var nameObservable: Observable<Void> { get }
+    var websiteObservable: Observable<Void> { get }
+    var dismissViewControllerTrigger: Observable<Result<Void, AppError>> {get}
     
     func insertAirline(name: String, country: String?, slogan: String?, headquaters: String?, website: String)
 }
 
 class AddAirlinesViewModel: AddAirlinesProtocol{
-    var nameObservable: PublishSubject<Void> = PublishSubject()
-    var websiteObservable: PublishSubject<Void> = PublishSubject()
-    
-    var dismissViewControllerTrigger: PublishSubject<Result<Void, AppError>>? =  PublishSubject<Result<Void, AppError>>()
-    
+    private var nameSubject: PublishSubject<Void> = PublishSubject()
+    private var websiteSubject: PublishSubject<Void> = PublishSubject()
+    private var dismissViewControllerSubject: PublishSubject<Result<Void, AppError>> =  PublishSubject<Result<Void, AppError>>()
     private let useCase: AirlinesUseCaseProtocol
     private let disposeBag = DisposeBag()
+    
+    var nameObservable: Observable<Void> {
+        return nameSubject.map { result in
+            return()
+        }
+    }
+    
+    var websiteObservable: Observable<Void> {
+        return websiteSubject.map { result in
+            return()
+        }
+    }
+    
+    var dismissViewControllerTrigger: Observable<Result<Void, AppError>> {
+        return dismissViewControllerSubject.map { result in
+            switch result {
+            case .success(_):
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
     
     init(useCase: AirlinesUseCaseProtocol = AirlinesUseCase()) {
         self.useCase = useCase
@@ -42,9 +64,9 @@ class AddAirlinesViewModel: AddAirlinesProtocol{
             .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success(()):
-                    self?.dismissViewControllerTrigger?.onNext(.success(()))
+                    self?.dismissViewControllerSubject.onNext(.success(()))
                 case .failure(let error):
-                    self?.dismissViewControllerTrigger?.onNext(.failure(error))
+                    self?.dismissViewControllerSubject.onNext(.failure(error))
                 }
                 
             }).disposed(by: disposeBag)
@@ -53,16 +75,16 @@ class AddAirlinesViewModel: AddAirlinesProtocol{
     private func validateInput(airline: DataModel){
         if airline.name == Constants.emptyString && !(airline.website?.contains(Constants.validURL) ?? true){
             
-            nameObservable.onNext(())
-            websiteObservable.onNext(())
+            nameSubject.onNext(())
+            websiteSubject.onNext(())
         }
         else if airline.name != Constants.emptyString && !(airline.website?.contains(Constants.validURL) ?? false){
             
-            websiteObservable.onNext(())
+            websiteSubject.onNext(())
         }
         else if airline.name == Constants.emptyString && ((airline.website?.contains(Constants.validURL)) != nil){
             
-            nameObservable.onNext(())
+            nameSubject.onNext(())
         }
         else{
             addAirlineData(airline: airline)
