@@ -6,22 +6,25 @@ Airlines-Application is a Master-Details app designed to help users explore and 
 ## Features  
 
 ### App Features  
-- **View All Airlines**: Browse a list of all available airlines.  
-- **Search for Airlines**: Search airlines by name with results updating dynamically as you type.  
-- **Airline Details**:  
+##### 1. View All Airlines
+-  Browse a list of all available airlines.  
+##### 2. Search for Airlines
+-  Search for airlines by name with results updating dynamically as you type.  
+##### 3. Airline Details
   - View detailed information about an airline, including:  
     - Name  
     - Country  
     - Slogan  
     - Headquarters  
     - Website link  
-- **Add New Airlines**:  
-  - Use a form to add a new airline with details like:  
+##### 4. Add New Airlines 
+  - Use a form to add a new airline with the following details:  
     - Name  
     - Country  
     - Slogan  
     - Headquarters  
-    - Website URL  
+    - Website URL
+- The new airline will be added to the list.
 
 ## Technical Details  
 
