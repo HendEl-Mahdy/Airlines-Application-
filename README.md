@@ -1,57 +1,64 @@
-# Airlines-Application
+# Airlines-Application  
 
-## Overview
-Master-Details Application for Airlines that helps users find and manage information about different airlines. You can see all airlines, search for specific ones, view detailed information, and visit their websites directly from the app. You can also add new airlines to the list.
+## Overview  
+Airlines-Application is a Master-Details app designed to help users explore and manage airline information. The app allows users to browse all airlines, search for specific ones, view detailed information, and add new airlines to the list.  
 
-## Features
+---
 
-#### App Features
-###### 1. View All Airlines
-- See a list of all available airlines.
+## Features  
 
-###### 2. Search for Airlines
-- Search for airlines by name.
-- The list updates as you type.
+### App Features  
+- **View All Airlines**: Browse a list of all available airlines.  
+- **Search for Airlines**: Search airlines by name with results updating dynamically as you type.  
+- **Airline Details**:  
+  - View detailed information about an airline, including:  
+    - Name  
+    - Country  
+    - Slogan  
+    - Headquarters  
+    - Website link  
+- **Add New Airlines**:  
+  - Use a form to add a new airline with details like:  
+    - Name  
+    - Country  
+    - Slogan  
+    - Headquarters  
+    - Website URL  
 
-###### 3. Airline Details
-- View detailed information about each airline, including:
-  - Name
-  - Country 
-  - Slogan
-  - Headquaters
-  - Link to the airline's website.
+---
 
-###### 4. Add New Airlines
-- Fill out a form to add new airlines with the following details:
-  - Name
-  - Country 
-  - Slogan
-  - Headquaters
-  - Website URL
-- The new airline will be added to the list.
+## Technical Details  
 
-#### Architecture
-- MVVM (Model-View-ViewModel): The project uses the MVVM architecture to separate UI from business logic, improving maintainability and testability.
+### Architecture  
+- **MVVM with Clean Architecture**: Ensures a modular and maintainable codebase.  
 
-#### Reactive Programming
-- RxSwift: The project uses RxSwift for reactive programming, enabling efficient handling of asynchronous events, data binding, and UI state management.
+### Reactive Programming  
+- **RxSwift**: Handles data binding and reactive updates for a seamless user experience.  
 
-#### Design Principles
-- Protocol-Oriented Programming (POP): The codebase uses Protocol-Oriented Programming to enhance flexibility, modularity, code reuse, and testability.
-  
-#### Data Management
-- The project uses Core Data for efficient data storage and management
-  
-#### Networking
-- API Integration: The app integrates with external APIs to fetch data dynamically.
-  
-#### UI Framework
-- UIKit: The project is built using UIKit, Apple's native framework for constructing and managing the app's user interface.
-  
-## Installation
-1. Open the Xcode Application
-2. Choose Clone Git Repository
-3. Add the Repository URL
-  ```
+### Design Principles  
+- **Protocol-Oriented Programming (POP)**: Enhances flexibility, modularity, and testability.  
+
+### Data Management  
+- **Core Data**: Efficiently handles local data storage.  
+
+### Networking  
+- **API Integration**: Fetches dynamic data from external sources. *(Currently, API integration is under development and not fully functional.)*  
+
+### UI Framework  
+- **UIKit**: Built with Apple’s UIKit framework to deliver a smooth and responsive user interface.  
+
+### Unit Testing  
+- Includes unit tests to ensure app reliability and maintain quality standards.  
+
+---
+
+## Installation  
+
+1. Open Xcode.  
+2. Select **Clone Git Repository**.  
+3. Enter the repository URL:  
+   ```bash
    https://github.com/HendEl-Mahdy/Airlines-Application-.git
-  ```
+
+## Note
+The project currently uses mocked data to fetch airline information while API functionality is being developed.
