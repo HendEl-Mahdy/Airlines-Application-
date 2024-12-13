@@ -44,7 +44,7 @@ Airlines-Application is a Master-Details app designed to help users explore and 
 - **API Integration**: Fetches dynamic data from external sources. *(Currently, API integration is under development and not fully functional.)*  
 
 ### UI Framework  
-- **UIKit**: Built with Apple’s UIKit framework to deliver a smooth and responsive user interface.  
+- **UIKit with XIB Files**: The user interface is built using UIKit and custom-designed XIB files for reusable and modular UI components.  
 
 ### Unit Testing  
 - Includes unit tests to ensure app reliability and maintain quality standards.  
