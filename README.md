@@ -3,8 +3,6 @@
 ## Overview  
 Airlines-Application is a Master-Details app designed to help users explore and manage airline information. The app allows users to browse all airlines, search for specific ones, view detailed information, and add new airlines to the list.  
 
----
-
 ## Features  
 
 ### App Features  
@@ -24,8 +22,6 @@ Airlines-Application is a Master-Details app designed to help users explore and 
     - Slogan  
     - Headquarters  
     - Website URL  
-
----
 
 ## Technical Details  
 
@@ -49,8 +45,6 @@ Airlines-Application is a Master-Details app designed to help users explore and 
 
 ### Unit Testing  
 - Includes unit tests to ensure app reliability and maintain quality standards.  
-
----
 
 ## Installation  
 
